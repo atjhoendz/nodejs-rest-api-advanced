@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  project_rest_api_dev:
+    container_name: project_rest_api_dev
+    restart: always
+    build: .
+    command: 'yarn dev'
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - project_network
+    env_file: .env
+
+networks:
+  project_network:
+    name: project_network
