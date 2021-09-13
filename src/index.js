@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import router from './routes/index.js';
 import config from './utils/config.js';
+import logger from './utils/logger.js';
 
 const app = express();
 
@@ -20,5 +21,5 @@ app.use((req, res) => {
 });
 
 app.listen(config.port, () => {
-  console.log(`Listening on PORT ${config.port}`);
+  logger.info(`Listening on PORT ${config.port}`);
 });

@@ -1,3 +1,4 @@
+import logger from '../utils/logger.js';
 import conn from './connection.js';
 
 const args = process.argv.slice(2);
@@ -47,5 +48,5 @@ switch (args[0]) {
     await dropAllTable();
     break;
   default:
-    console.log(`Argument ${args[0]} doesn't provided`);
+    logger.debug(`Argument ${args[0]} doesn't provided`);
 }

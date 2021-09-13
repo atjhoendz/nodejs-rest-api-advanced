@@ -1,29 +1,30 @@
 import pgp from 'pg-promise';
 import config from '../utils/config.js';
+import logger from '../utils/logger.js';
 
 const initOptions = {
   connect(client, dc, useCount) {
     const cp = client.connectionParameters;
-    console.log(`Connected to database: ${cp.database}`);
+    logger.debug(`Connected to database: ${cp.database}`);
   },
   disconnect(client, dc) {
     const cp = client.connectionParameters;
-    console.log(`Disconnecting from database: ${cp.database}`);
+    logger.debug(`Disconnecting from database: ${cp.database}`);
   },
   error(err, e) {
     if (e.cn) {
-      console.log(`Error connection: ${err}`);
+      logger.error(`Error connection: ${err}`);
     }
     if (e.query) {
-      console.log(`Error query: ${err}`);
+      logger.error(`Error query: ${err}`);
 
       if (e.params) {
-        console.log(`Error query params: ${err}`);
+        logger.error(`Error query params: ${err}`);
       }
     }
 
     if (e.ctx) {
-      console.log(`Error Context: ${err}`);
+      logger.error(`Error Context: ${err}`);
     }
   },
 };
