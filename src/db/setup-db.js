@@ -11,7 +11,7 @@ const createUserTable = async () => {
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30),
     email VARCHAR(50) UNIQUE NOT NULL,
-    created_at DATE NOT NULL
+    created_at TIMESTAMPTZ NOT NULL DEFAULT(CURRENT_TIMESTAMP)
   )
   `;
 
@@ -40,12 +40,20 @@ const dropAllTable = async () => {
   await dropUserTable();
 };
 
+const refreshDB = async () => {
+  await dropAllTable();
+  await createAllTable();
+};
+
 switch (args[0]) {
-  case 'createAllTable':
+  case 'init':
     await createAllTable();
     break;
-  case 'dropAllTable':
+  case 'drop':
     await dropAllTable();
+    break;
+  case 'refresh':
+    await refreshDB();
     break;
   default:
     logger.debug(`Argument ${args[0]} doesn't provided`);
