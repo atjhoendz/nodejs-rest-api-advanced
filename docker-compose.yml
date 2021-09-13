@@ -12,7 +12,29 @@ services:
       - /app/node_modules
     networks:
       - project_network
-    env_file: .env
+    env_file:
+      - .env
+    depends_on:
+      - project_db_postgresql
+
+  project_db_postgresql:
+    container_name: project_db_postgresql
+    image: 'postgres'
+    restart: always
+    ports:
+      - 35432:5432
+    env_file:
+      - .env
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - project_db_data:/var/lib/postgresql/data/
+    networks:
+      - project_network
+
+volumes:
+  project_db_data:
+    name: project_db_data
 
 networks:
   project_network:
