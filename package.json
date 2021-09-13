@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon",
-    "setup:table": "node src/db/setup-db.js createAllTable"
+    "db:init": "node src/db/setup-db.js init",
+    "db:drop": "node src/db/setup-db.js drop",
+    "db:refresh": "node src/db/setup-db.js refresh"
   },
   "type": "module",
   "repository": "https://github.com/atjhoendz/nodejs-rest-api-advanced.git",
