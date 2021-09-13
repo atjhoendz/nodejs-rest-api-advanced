@@ -8,7 +8,7 @@ A project exploration to create rest api in advanced with nodejs. It will be a l
     - [Prerequisites](#prerequisites)
     - [Running the service](#running-the-service)
   - [API Documentation](#api-documentation)
-  - [Feature:](#feature)
+  - [Features:](#features)
 
 ## Development
 ### Prerequisites
@@ -45,7 +45,7 @@ $ make refresh_db_dev
 [API Docs Link](https://documenter.getpostman.com/view/6010208/U16nKPNY)
 
 
-## Feature:
+## Features:
 - [x] Docker Integration
 - [x] Database PostgreSQL
 - [ ] Unit Test
