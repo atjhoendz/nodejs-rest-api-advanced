@@ -46,9 +46,10 @@ $ make refresh_db_dev
 
 
 ## Features:
-- [x] Docker Integration
+- [x] Docker Environment
 - [x] Database PostgreSQL
 - [x] End to End Testing Using Jest & Supertest
+- [ ] Integrate Testing with TravisCI
 - [ ] Redis
 - [ ] Sync PostgreSQL with Elasticsearch
 - [ ] Elasticsearch
