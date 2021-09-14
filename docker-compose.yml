@@ -28,6 +28,7 @@ services:
     environment:
       - TZ=Asia/Jakarta
     volumes:
+      - ./setup-postgresql.sh:/docker-entrypoint-initdb.d/setup-db.sh
       - project_db_data:/var/lib/postgresql/data/
     networks:
       - project_network
