@@ -8,7 +8,7 @@ A project exploration to create rest api in advanced with nodejs. It will be a l
     - [Prerequisites](#prerequisites)
     - [Running the service](#running-the-service)
   - [API Documentation](#api-documentation)
-  - [Features:](#features)
+  - [Features](#features)
 
 ## Development
 ### Prerequisites
@@ -45,9 +45,10 @@ $ make refresh_db_dev
 [API Docs Link](https://documenter.getpostman.com/view/6010208/U16nKPNY)
 
 
-## Features:
+## Features
 - [x] Docker Environment
 - [x] Database PostgreSQL
+- [x] Pure SQL doesn't use ORM (main branch)
 - [x] End to End Testing Using Jest & Supertest
 - [ ] Integrate Testing with TravisCI
 - [ ] Redis
