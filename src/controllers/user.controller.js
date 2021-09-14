@@ -90,7 +90,8 @@ export default {
     // handle capability of partial column update
     // remove empty or null value
     for (let el in body) {
-      if (body[el] === '' || body[el] === null) delete body[el];
+      if (body[el] === '' || body[el] === null || body[el] === undefined)
+        delete body[el];
     }
 
     const keys = Object.keys(body);
@@ -149,7 +150,7 @@ export default {
           formatResponse(
             statusCode.success,
             result,
-            'A user data removed succesfully',
+            'A user data removed successfully',
           ),
         );
     } catch (err) {
