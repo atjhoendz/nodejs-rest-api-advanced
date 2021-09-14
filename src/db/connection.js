@@ -3,14 +3,6 @@ import config from '../utils/config.js';
 import logger from '../utils/logger.js';
 
 const initOptions = {
-  connect(client, dc, useCount) {
-    const cp = client.connectionParameters;
-    logger.debug(`Connected to database: ${cp.database}`);
-  },
-  disconnect(client, dc) {
-    const cp = client.connectionParameters;
-    logger.debug(`Disconnecting from database: ${cp.database}`);
-  },
   error(err, e) {
     if (e.cn) {
       logger.error(`Error connection: ${err}`);
@@ -29,8 +21,10 @@ const initOptions = {
   },
 };
 
+const dbName = config.isDev() ? config.postgres_db : config.postgres_db_test;
+
 const conn = pgp(initOptions)(
-  `postgres://${config.postgres_user}:${config.postgres_password}@${config.postgres_host}:${config.postgres_port}/${config.postgres_db}`,
+  `postgres://${config.postgres_user}:${config.postgres_password}@${config.postgres_host}:${config.postgres_port}/${dbName}`,
 );
 
 export default conn;

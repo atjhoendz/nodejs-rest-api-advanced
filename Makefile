@@ -23,3 +23,10 @@ drop_db_dev:
 
 refresh_db_dev:
 	@docker-compose exec project_rest_api_dev yarn db:refresh
+
+# test
+test:
+	@docker-compose exec project_rest_api_dev yarn test
+
+test_watch:
+	@docker-compose exec project_rest_api_dev yarn test:watch
