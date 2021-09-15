@@ -2,22 +2,46 @@ import { formatResponse } from '../utils/format-response.js';
 import { statusCode } from '../utils/status.js';
 import db from '../db/connection.js';
 import logger from '../utils/logger.js';
+import client from '../utils/redis.js';
 
 export default {
   findAll: async (req, res) => {
     try {
-      const result = await db.manyOrNone(
-        'SELECT * FROM users ORDER BY created_at ASC;',
-      );
-      res
-        .status(statusCode.success)
-        .json(
-          formatResponse(
-            statusCode.success,
-            result,
-            'Successfully get all user data',
-          ),
-        );
+      // get data from redis by key 'user'
+      client.get('user', async (err, data) => {
+        if (err) throw err;
+
+        // if data from redis is exist then return it
+        if (data) {
+          res
+            .status(statusCode.success)
+            .json(
+              formatResponse(
+                statusCode.success,
+                JSON.parse(data),
+                'Successfully get all user data from redis cache',
+              ),
+            );
+        } else {
+          // if doesn't exist on redis then get it from DB
+          const result = await db.manyOrNone(
+            'SELECT * FROM users ORDER BY created_at ASC;',
+          );
+
+          // save data from DB to redis with 60 second expiration time, for next request
+          if (result.length) client.setex('user', 60, JSON.stringify(result));
+
+          res
+            .status(statusCode.success)
+            .json(
+              formatResponse(
+                statusCode.success,
+                result,
+                'Successfully get all user data',
+              ),
+            );
+        }
+      });
     } catch (err) {
       logger.error(err);
     }
