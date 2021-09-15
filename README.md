@@ -1,6 +1,8 @@
 # NodeJS REST API Advanced
 A project exploration to create rest api in advanced with nodejs. It will be a long-term development with flexible features.
 
+[![Build Status](https://app.travis-ci.com/atjhoendz/nodejs-rest-api-advanced.svg?branch=main)](https://app.travis-ci.com/atjhoendz/nodejs-rest-api-advanced)
+
 ## Table Of Content
 - [NodeJS REST API Advanced](#nodejs-rest-api-advanced)
   - [Table Of Content](#table-of-content)
@@ -50,7 +52,7 @@ $ make refresh_db_dev
 - [x] Database PostgreSQL
 - [x] Pure SQL doesn't use ORM (main branch)
 - [x] End to End Testing Using Jest & Supertest
-- [ ] Integrate Testing with TravisCI
+- [x] Integrate Testing with TravisCI
 - [ ] Redis
 - [ ] Sync PostgreSQL with Elasticsearch
 - [ ] Elasticsearch
