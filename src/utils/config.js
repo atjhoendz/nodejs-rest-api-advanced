@@ -12,10 +12,28 @@ const config = {
   postgres_host: process.env.POSTGRES_HOST,
 
   isDev() {
-    return this.node_env == 'development';
+    return this.node_env === 'development';
   },
   isProd() {
-    return this.node_env == 'production';
+    return this.node_env === 'production';
+  },
+  isTest() {
+    return this.node_env === 'test';
+  },
+  loggerLevel() {
+    if (this.isDev()) return 'debug';
+    else if (this.isProd()) return '';
+    return '';
+  },
+  morganFormat() {
+    if (this.isDev()) return 'dev';
+    else if (this.isProd()) return 'combined';
+    return 'tiny';
+  },
+  postgresSelectedDB() {
+    if (this.isDev()) return this.postgres_db;
+    else if (this.isProd()) return this.postgres_db;
+    return this.postgres_db_test;
   },
 };
 
