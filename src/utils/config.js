@@ -10,6 +10,8 @@ const config = {
   postgres_db_test: process.env.POSTGRES_DB_TEST,
   postgres_port: process.env.POSTGRES_PORT,
   postgres_host: process.env.POSTGRES_HOST,
+  redis_port: process.env.REDIS_PORT,
+  redis_host: process.env.REDIS_HOST,
 
   isDev() {
     return this.node_env === 'development';

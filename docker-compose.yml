@@ -16,6 +16,7 @@ services:
       - .env
     depends_on:
       - project_db_postgresql
+      - project_redis
 
   project_db_postgresql:
     container_name: project_db_postgresql
@@ -33,9 +34,23 @@ services:
     networks:
       - project_network
 
+  project_redis:
+    container_name: project_redis
+    image: 'redis'
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - project_redis_data:/var/lib/redis
+      - project_redis_data:/usr/local/etc/redis/redis.conf
+    networks:
+      - project_network
+
 volumes:
   project_db_data:
     name: project_db_data
+  project_redis_data:
+    name: project_redis_data
 
 networks:
   project_network:
