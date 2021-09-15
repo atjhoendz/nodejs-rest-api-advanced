@@ -53,6 +53,6 @@ $ make refresh_db_dev
 - [x] Pure SQL doesn't use ORM (main branch)
 - [x] End to End Testing Using Jest & Supertest
 - [x] Integrate Testing with TravisCI
-- [ ] Redis
+- [x] Caching data with Redis
 - [ ] Sync PostgreSQL with Elasticsearch
 - [ ] Elasticsearch
