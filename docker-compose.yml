@@ -17,6 +17,7 @@ services:
     depends_on:
       - project_db_postgresql
       - project_redis
+      - project_elasticsearch
 
   project_db_postgresql:
     container_name: project_db_postgresql
@@ -46,11 +47,26 @@ services:
     networks:
       - project_network
 
+  project_elasticsearch:
+    container_name: project_elasticsearch
+    image: 'docker.elastic.co/elasticsearch/elasticsearch:7.14.1'
+    environment:
+      - discovery.type=single-node
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - project_es_data:/usr/share/elasticsearch/data
+    networks:
+      - project_network
+
 volumes:
   project_db_data:
     name: project_db_data
   project_redis_data:
     name: project_redis_data
+  project_es_data:
+    name: project_es_data
 
 networks:
   project_network:

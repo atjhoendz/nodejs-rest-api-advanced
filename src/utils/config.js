@@ -12,6 +12,8 @@ const config = {
   postgres_host: process.env.POSTGRES_HOST,
   redis_port: process.env.REDIS_PORT,
   redis_host: process.env.REDIS_HOST,
+  elasticsearch_host: process.env.ELASTICSEARCH_HOST,
+  elasticsearch_port: process.env.ELASTICSEARCH_PORT,
 
   isDev() {
     return this.node_env === 'development';
@@ -36,6 +38,9 @@ const config = {
     if (this.isDev()) return this.postgres_db;
     else if (this.isProd()) return this.postgres_db;
     return this.postgres_db_test;
+  },
+  elasticsearchConnURL() {
+    return `${this.elasticsearch_host}:${this.elasticsearch_port}`;
   },
 };
 
