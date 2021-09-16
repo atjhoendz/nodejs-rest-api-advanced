@@ -2,6 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 import user from './user.js';
+import userES from './user-es.js';
 
 router.get('/', (req, res) => {
   res.json({
@@ -12,5 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/user', user);
+router.use('/user-es', userES);
 
 export default router;
