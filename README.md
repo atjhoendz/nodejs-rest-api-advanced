@@ -54,5 +54,5 @@ $ make refresh_db_dev
 - [x] End to End Testing Using Jest & Supertest
 - [x] Integrate Testing with TravisCI
 - [x] Caching data with Redis
+- [x] Elasticsearch
 - [ ] Sync PostgreSQL with Elasticsearch
-- [ ] Elasticsearch
